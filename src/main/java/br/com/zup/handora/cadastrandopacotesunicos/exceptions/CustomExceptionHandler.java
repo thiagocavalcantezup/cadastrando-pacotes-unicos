@@ -119,6 +119,10 @@ public class CustomExceptionHandler {
             httpStatus = HttpStatus.UNPROCESSABLE_ENTITY;
 
             switch (constraintName.toUpperCase()) {
+                case "UK_PACOTE_HASH_CPF":
+                    mensagemGeral = "Houve um problema com a sua requisição.";
+                    mensagemEspecifica = "Já existe um pacote cadastrado para este titular.";
+                    break;
                 default:
                     mensagemEspecifica = "Violação de restrição dos dados.";
                     break;
