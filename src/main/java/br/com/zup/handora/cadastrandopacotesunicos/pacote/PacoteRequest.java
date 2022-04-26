@@ -11,6 +11,9 @@ import org.hibernate.validator.constraints.br.CPF;
 public class PacoteRequest {
 
     @NotBlank
+    private String nome;
+
+    @NotBlank
     @CPF
     @Pattern(regexp = "^[0-9]{3}\\.[0-9]{3}\\.[0-9]{3}\\-[0-9]{2}$")
     private String cpf;
@@ -26,9 +29,11 @@ public class PacoteRequest {
 
     public PacoteRequest() {}
 
-    public PacoteRequest(@NotBlank @CPF @Pattern(regexp = "^[0-9]{3}\\.[0-9]{3}\\.[0-9]{3}\\-[0-9]{2}$") String cpf,
+    public PacoteRequest(@NotBlank String nome,
+                         @NotBlank @CPF @Pattern(regexp = "^[0-9]{3}\\.[0-9]{3}\\.[0-9]{3}\\-[0-9]{2}$") String cpf,
                          @NotBlank @Pattern(regexp = "^\\+[1-9][0-9]\\d{1,14}$") String numeroCelular,
                          @NotNull @Min(6) @Max(49) Integer quantidadeDadosGigabytes) {
+        this.nome = nome;
         this.cpf = cpf;
         this.numeroCelular = numeroCelular;
         this.quantidadeDadosGigabytes = quantidadeDadosGigabytes;
@@ -37,7 +42,7 @@ public class PacoteRequest {
     public Pacote toModel() {
         Cpf cpfTitular = new Cpf(cpf);
 
-        return new Pacote(cpfTitular, numeroCelular, quantidadeDadosGigabytes);
+        return new Pacote(nome, cpfTitular, numeroCelular, quantidadeDadosGigabytes);
     }
 
     public String getCpf() {

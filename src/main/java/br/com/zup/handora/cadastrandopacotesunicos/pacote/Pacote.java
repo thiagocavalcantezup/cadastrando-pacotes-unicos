@@ -25,6 +25,9 @@ public class Pacote {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
+    private String nome;
+
     @Embedded
     @AttributeOverrides({
             @AttributeOverride(name = "numero", column = @Column(name = "numero_cpf", nullable = false, length = 14)),
@@ -49,9 +52,10 @@ public class Pacote {
     @Deprecated
     public Pacote() {}
 
-    public Pacote(Cpf cpfTitular,
+    public Pacote(String nome, Cpf cpfTitular,
                   @Pattern(regexp = "^\\+[1-9][0-9]\\d{1,14}$") String numeroCelular,
                   @Min(6) @Max(49) Integer quantidadeDadosGigabytes) {
+        this.nome = nome;
         this.cpfTitular = cpfTitular;
         this.numeroCelular = numeroCelular;
         this.quantidadeDadosGigabytes = quantidadeDadosGigabytes;
