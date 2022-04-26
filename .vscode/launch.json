@@ -1,0 +1,15 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot-CadastrandoPacotesUnicosApplication<cadastrando-pacotes-unicos>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "console": "internalConsole",
+      "mainClass": "br.com.zup.handora.cadastrandopacotesunicos.CadastrandoPacotesUnicosApplication",
+      "projectName": "cadastrando-pacotes-unicos",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}
